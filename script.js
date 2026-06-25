@@ -1,16 +1,34 @@
-const games=[
-'Snake','Pong','Tetris','Flappy Bird','Car Racer','Drift Challenge',
-'Highway Driver','Parking Master','Tank Battle','Space Shooter',
-'Alien Attack','Zombie Survival','Platform Adventure','Jump Hero',
-'Football Stars','Basketball Challenge','Memory Cards','Sudoku',
-'Maze Escape','Chess','Checkers','2048'
+const games = [
+  {name:"Snake", link:"snake.html"},
+  {name:"Pong", link:"pong.html"},
+  {name:"2048", link:"2048.html"},
+  {name:"Tetris", link:"tetris.html"},
+  {name:"Car Racer", link:"carracer.html"}
 ];
-const container=document.getElementById('games');
+
+const container = document.getElementById('games');
+
 function render(list){
-container.innerHTML='';
-list.forEach(g=>container.innerHTML+=`<div class="card"><h3>${g}</h3><button>Bientôt disponible</button></div>`);
+  container.innerHTML = '';
+
+  list.forEach(game => {
+    container.innerHTML += `
+      <div class="card">
+        <h3>${game.name}</h3>
+        <a href="${game.link}">
+          <button>Jouer</button>
+        </a>
+      </div>
+    `;
+  });
 }
+
 render(games);
-document.getElementById('search').addEventListener('input',e=>{
-render(games.filter(g=>g.toLowerCase().includes(e.target.value.toLowerCase())));
+
+document.getElementById('search').addEventListener('input', e => {
+  render(
+    games.filter(game =>
+      game.name.toLowerCase().includes(e.target.value.toLowerCase())
+    )
+  );
 });
