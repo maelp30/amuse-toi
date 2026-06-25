@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Snake - Amuse Toi</title>
+</head>
+<body style="background:#121212;color:white;text-align:center;font-family:Arial">
+<h1>🐍 Snake</h1>
+<p>Premier vrai jeu ajouté !</p>
+
+<canvas id="game" width="400" height="400" style="background:black"></canvas>
+
+<script>
+const canvas=document.getElementById("game");
+const ctx=canvas.getContext("2d");
+
+let x=200,y=200;
+let dx=20,dy=0;
+let foodX=100,foodY=100;
+
+document.addEventListener("keydown",e=>{
+if(e.key==="ArrowUp"){dx=0;dy=-20;}
+if(e.key==="ArrowDown"){dx=0;dy=20;}
+if(e.key==="ArrowLeft"){dx=-20;dy=0;}
+if(e.key==="ArrowRight"){dx=20;dy=0;}
+});
+
+function draw(){
+ctx.fillStyle="black";
+ctx.fillRect(0,0,400,400);
+
+ctx.fillStyle="red";
+ctx.fillRect(foodX,foodY,20,20);
+
+ctx.fillStyle="lime";
+ctx.fillRect(x,y,20,20);
+
+x+=dx;
+y+=dy;
+
+if(x>380)x=0;
+if(x<0)x=380;
+if(y>380)y=0;
+if(y<0)y=380;
+
+if(x===foodX && y===foodY){
+foodX=Math.floor(Math.random()*20)*20;
+foodY=Math.floor(Math.random()*20)*20;
+}
+}
+
+setInterval(draw,120);
+</script>
+
+</body>
+</html>
