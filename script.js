@@ -4,6 +4,8 @@ const games = [
   {name:"2048", link:"2048.html"},
   {name:"Tetris", link:"tetris.html"},
   {name:"Car Racer", link:"carracer.html"}
+  {name:"morpion", link:"tic-tac.html"}
+  
 ];
 
 const container = document.getElementById('games');
